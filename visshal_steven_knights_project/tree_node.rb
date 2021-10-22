@@ -44,5 +44,15 @@ class PolyTreeNode
         nil
     end 
 
+    def self.print(node)
+        return if node.nil?
+        p "#{node.parent} #{node.value} #{node.children}"
+        puts 
+        node.children.each do |child|
+            PolyTreeNode.print(child)
+        end 
+        nil 
+    end 
+
     
 end
