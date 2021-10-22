@@ -52,7 +52,17 @@ class PolyTreeNode
             PolyTreeNode.print(child)
         end 
         nil 
-    end 
+    end
+    
+    def back_trace
+        path = [self.value]
+        node_parent = @parent
+        until node_parent.nil?
+            path.unshift(node_parent.value)
+            node_parent = node_parent.parent
+        end
+        path
+    end
 
     
 end

@@ -41,17 +41,22 @@ class KnightPathFinder
             moves_arr =  new_move_positions(first_node.value)
             moves_arr.each do |child_position|
                 child_node = PolyTreeNode.new(child_position)
-                @root_node.add_child(child_node)
+                first_node.add_child(child_node)
                 nodes_queue << child_node
             end 
        end
-       p @considered_positions.length 
+       #p @considered_positions.length 
     end 
 
-
+    def find_path(end_pos)
+        @root_node.bfs(end_pos)
+    end
 
 end
 
-knight = KnightPathFinder.new([5,5])
+knight = KnightPathFinder.new([0,0])
+
 knight.build_move_tree
+knight.root_node.children.length
+p knight.find_path([6, 2]).back_trace
 # PolyTreeNode.print(knight.root_node)
